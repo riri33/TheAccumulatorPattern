@@ -9,8 +9,8 @@ Additionally, it emphasizes that you must
 before you can implement a solution to the problem in Python.
 
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Riley McCrocklin.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -89,14 +89,22 @@ def draw_parallel_lines(n, point, length, window):
         -- Each rg.Line is 30 pixels below the previous rg.Line.
       Must  ** render **     but   ** NOT close **   the window.
 
+
     Type hints:
       :type n: int
       :type point: rg.Point
       :type length: int
       :type window: rg.RoseWindow
     """
+    for k in range(n):
+        end = rg.Point(point.x + length, point.y)
+        line = rg.Line(point, end)
+        line.attach_to(window)
+        point.y = point.y + 30
+        window.render()
+
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DOne: 2. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -160,8 +168,17 @@ def draw_lines(n, point, window):
       :type point: rg.Point
       :type window: rg.RoseWindow
     """
+    m = n-1
+    z = 200 / m
+    y = -100
+    for k in range(n):
+        end = rg.Point(point.x + 100, point.y + y)
+        line = rg.Line(point, end)
+        line.attach_to(window)
+        y = y + z
+        window.render()
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # Done: 3. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
